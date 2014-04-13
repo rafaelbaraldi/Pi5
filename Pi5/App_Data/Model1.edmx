@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="evento" EntityType="Database1Model.Store.evento" store:Type="Tables" />
+          <EntitySet Name="local" EntityType="Database1Model.Store.local" store:Type="Tables" />
+          <EntitySet Name="unidade" EntityType="Database1Model.Store.unidade" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Database1Model.Store.usuario" store:Type="Tables" />
+          <AssociationSet Name="fk_evento_local" Association="Database1Model.Store.fk_evento_local">
+            <End Role="local" EntitySet="local" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_usuario" Association="Database1Model.Store.fk_evento_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_local_unidade" Association="Database1Model.Store.fk_local_unidade">
+            <End Role="unidade" EntitySet="unidade" />
+            <End Role="local" EntitySet="local" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="evento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nome" Type="nvarchar" MaxLength="100" />
+          <Property Name="data" Type="datetime" />
+          <Property Name="duracao" Type="datetime" />
+          <Property Name="descricao" Type="nvarchar" MaxLength="100" />
+          <Property Name="id_local" Type="int" />
+          <Property Name="id_usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="local">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="nvarchar" MaxLength="100" />
+          <Property Name="capacidade" Type="int" />
+          <Property Name="equipamentos" Type="nvarchar" MaxLength="100" />
+          <Property Name="id_unidade" Type="int" />
+        </EntityType>
+        <EntityType Name="unidade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="nvarchar" MaxLength="100" />
+          <Property Name="endereco" Type="nvarchar" MaxLength="100" />
+          <Property Name="telefone" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="nvarchar" MaxLength="100" />
+          <Property Name="endereco" Type="nvarchar" MaxLength="100" />
+          <Property Name="telefone" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="senha" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_evento_local">
+          <End Role="local" Type="Database1Model.Store.local" Multiplicity="0..1" />
+          <End Role="evento" Type="Database1Model.Store.evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="local">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_usuario">
+          <End Role="usuario" Type="Database1Model.Store.usuario" Multiplicity="0..1" />
+          <End Role="evento" Type="Database1Model.Store.evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_local_unidade">
+          <End Role="unidade" Type="Database1Model.Store.unidade" Multiplicity="0..1" />
+          <End Role="local" Type="Database1Model.Store.local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="local">
+              <PropertyRef Name="id_unidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Database1Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="evento" EntityType="Database1Model.evento" />
+          <EntitySet Name="local" EntityType="Database1Model.local" />
+          <EntitySet Name="unidade" EntityType="Database1Model.unidade" />
+          <EntitySet Name="usuario" EntityType="Database1Model.usuario" />
+          <AssociationSet Name="fk_evento_local" Association="Database1Model.fk_evento_local">
+            <End Role="local" EntitySet="local" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_evento_usuario" Association="Database1Model.fk_evento_usuario">
+            <End Role="usuario" EntitySet="usuario" />
+            <End Role="evento" EntitySet="evento" />
+          </AssociationSet>
+          <AssociationSet Name="fk_local_unidade" Association="Database1Model.fk_local_unidade">
+            <End Role="unidade" EntitySet="unidade" />
+            <End Role="local" EntitySet="local" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="evento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="data" Precision="3" />
+          <Property Type="DateTime" Name="duracao" Precision="3" />
+          <Property Type="String" Name="descricao" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="id_local" />
+          <Property Type="Int32" Name="id_usuario" />
+          <NavigationProperty Name="local" Relationship="Database1Model.fk_evento_local" FromRole="evento" ToRole="local" />
+          <NavigationProperty Name="usuario" Relationship="Database1Model.fk_evento_usuario" FromRole="evento" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="local">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="capacidade" />
+          <Property Type="String" Name="equipamentos" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="id_unidade" />
+          <NavigationProperty Name="evento" Relationship="Database1Model.fk_evento_local" FromRole="local" ToRole="evento" />
+          <NavigationProperty Name="unidade" Relationship="Database1Model.fk_local_unidade" FromRole="local" ToRole="unidade" />
+        </EntityType>
+        <EntityType Name="unidade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="endereco" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="telefone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="local" Relationship="Database1Model.fk_local_unidade" FromRole="unidade" ToRole="local" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="endereco" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="telefone" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="senha" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="evento" Relationship="Database1Model.fk_evento_usuario" FromRole="usuario" ToRole="evento" />
+        </EntityType>
+        <Association Name="fk_evento_local">
+          <End Type="Database1Model.local" Role="local" Multiplicity="0..1" />
+          <End Type="Database1Model.evento" Role="evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="local">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_local" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_evento_usuario">
+          <End Type="Database1Model.usuario" Role="usuario" Multiplicity="0..1" />
+          <End Type="Database1Model.evento" Role="evento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="evento">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_local_unidade">
+          <End Type="Database1Model.unidade" Role="unidade" Multiplicity="0..1" />
+          <End Type="Database1Model.local" Role="local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="unidade">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="local">
+              <PropertyRef Name="id_unidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+        <EntitySetMapping Name="evento">
+            <EntityTypeMapping TypeName="Database1Model.evento">
+              <MappingFragment StoreEntitySet="evento">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="id_local" ColumnName="id_local" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="duracao" ColumnName="duracao" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="local">
+            <EntityTypeMapping TypeName="Database1Model.local">
+              <MappingFragment StoreEntitySet="local">
+                <ScalarProperty Name="id_unidade" ColumnName="id_unidade" />
+                <ScalarProperty Name="equipamentos" ColumnName="equipamentos" />
+                <ScalarProperty Name="capacidade" ColumnName="capacidade" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unidade">
+            <EntityTypeMapping TypeName="Database1Model.unidade">
+              <MappingFragment StoreEntitySet="unidade">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="Database1Model.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="senha" ColumnName="senha" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

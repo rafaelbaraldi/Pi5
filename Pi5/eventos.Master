@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="eventos.master.cs" Inherits="Pi5.eventos" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="CSS/geral.css" rel="stylesheet" />
+    <title>Eventos Senac</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="body">
+
+        <h1>Painel de Controle Eventos - SENAC</h1>
+        <br />
+
+        <div class="body">
+            <a href="#" class="login">
+                <asp:Label runat="server" Text="Login" />
+            </a>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </div>
+    </form>
+</body>
+</html>
