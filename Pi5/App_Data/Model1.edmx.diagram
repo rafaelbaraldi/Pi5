@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="91f456d05f464492ad89e7aa8118cefd" Name="Diagram1">
-        <EntityTypeShape EntityType="Database1Model.evento" Width="1.5" PointX="2.409721641992089" PointY="19.619016686277007" />
-        <EntityTypeShape EntityType="Database1Model.local" Width="1.5" PointX="4.0343279987733478" PointY="4.5135821572102524" />
-        <EntityTypeShape EntityType="Database1Model.unidade" Width="1.5" PointX="4.0533726103852379" PointY="25.651240316057223" />
-        <EntityTypeShape EntityType="Database1Model.usuario" Width="1.5" PointX="9.02998920764308" PointY="7.8461184985219123" />
-        <AssociationConnector Association="Database1Model.fk_evento_local" />
-        <AssociationConnector Association="Database1Model.fk_evento_usuario" />
-        <AssociationConnector Association="Database1Model.fk_local_unidade" />
+      <Diagram DiagramId="2cabc3ec34504c4c8f2a4039e693d3c2" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.evento" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.local" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.unidade" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.usuario" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.fk_evento_local" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.fk_evento_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.fk_local_unidade" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -19,7 +19,7 @@
                 <ItemStyle HorizontalAlign="Center" />
                 <ItemTemplate><asp:Label ID="lblSub" runat="server" Text='<%# Eval("descricao") %>' /></ItemTemplate>
             </asp:TemplateField>
-
+            
             <asp:TemplateField HeaderText="Local">
                 <HeaderStyle Width="160px" />
                 <ItemStyle HorizontalAlign="Center" />

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Database1Model.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="Database1ModelStoreContainer">
           <EntitySet Name="evento" EntityType="Database1Model.Store.evento" store:Type="Tables" />
           <EntitySet Name="local" EntityType="Database1Model.Store.local" store:Type="Tables" />
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="nome" Type="nvarchar" MaxLength="100" />
           <Property Name="data" Type="datetime" />
           <Property Name="duracao" Type="datetime" />
@@ -102,7 +102,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Database1Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -128,13 +129,13 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="data" Precision="3" />
-          <Property Type="DateTime" Name="duracao" Precision="3" />
-          <Property Type="String" Name="descricao" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="id_local" />
-          <Property Type="Int32" Name="id_usuario" />
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="duracao" Type="DateTime" Precision="3" />
+          <Property Name="descricao" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="id_local" Type="Int32" />
+          <Property Name="id_usuario" Type="Int32" />
           <NavigationProperty Name="local" Relationship="Database1Model.fk_evento_local" FromRole="evento" ToRole="local" />
           <NavigationProperty Name="usuario" Relationship="Database1Model.fk_evento_usuario" FromRole="evento" ToRole="usuario" />
         </EntityType>
@@ -142,11 +143,11 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="capacidade" />
-          <Property Type="String" Name="equipamentos" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="id_unidade" />
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="capacidade" Type="Int32" />
+          <Property Name="equipamentos" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="id_unidade" Type="Int32" />
           <NavigationProperty Name="evento" Relationship="Database1Model.fk_evento_local" FromRole="local" ToRole="evento" />
           <NavigationProperty Name="unidade" Relationship="Database1Model.fk_local_unidade" FromRole="local" ToRole="unidade" />
         </EntityType>
@@ -154,28 +155,28 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="endereco" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="telefone" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="endereco" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="telefone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="local" Relationship="Database1Model.fk_local_unidade" FromRole="unidade" ToRole="local" />
         </EntityType>
         <EntityType Name="usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nome" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="endereco" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="telefone" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="senha" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="endereco" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="telefone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="senha" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="evento" Relationship="Database1Model.fk_evento_usuario" FromRole="usuario" ToRole="evento" />
         </EntityType>
         <Association Name="fk_evento_local">
-          <End Type="Database1Model.local" Role="local" Multiplicity="0..1" />
-          <End Type="Database1Model.evento" Role="evento" Multiplicity="*" />
+          <End Role="local" Type="Database1Model.local" Multiplicity="0..1" />
+          <End Role="evento" Type="Database1Model.evento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="local">
               <PropertyRef Name="id" />
@@ -186,8 +187,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_evento_usuario">
-          <End Type="Database1Model.usuario" Role="usuario" Multiplicity="0..1" />
-          <End Type="Database1Model.evento" Role="evento" Multiplicity="*" />
+          <End Role="usuario" Type="Database1Model.usuario" Multiplicity="0..1" />
+          <End Role="evento" Type="Database1Model.evento" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuario">
               <PropertyRef Name="id" />
@@ -198,8 +199,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_local_unidade">
-          <End Type="Database1Model.unidade" Role="unidade" Multiplicity="0..1" />
-          <End Type="Database1Model.local" Role="local" Multiplicity="*" />
+          <End Role="unidade" Type="Database1Model.unidade" Multiplicity="0..1" />
+          <End Role="local" Type="Database1Model.local" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="unidade">
               <PropertyRef Name="id" />
@@ -215,50 +216,50 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
-        <EntitySetMapping Name="evento">
+          <EntitySetMapping Name="evento">
             <EntityTypeMapping TypeName="Database1Model.evento">
               <MappingFragment StoreEntitySet="evento">
-                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-                <ScalarProperty Name="id_local" ColumnName="id_local" />
-                <ScalarProperty Name="descricao" ColumnName="descricao" />
-                <ScalarProperty Name="duracao" ColumnName="duracao" />
-                <ScalarProperty Name="data" ColumnName="data" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="duracao" ColumnName="duracao" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="id_local" ColumnName="id_local" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="local">
             <EntityTypeMapping TypeName="Database1Model.local">
               <MappingFragment StoreEntitySet="local">
-                <ScalarProperty Name="id_unidade" ColumnName="id_unidade" />
-                <ScalarProperty Name="equipamentos" ColumnName="equipamentos" />
-                <ScalarProperty Name="capacidade" ColumnName="capacidade" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="capacidade" ColumnName="capacidade" />
+                <ScalarProperty Name="equipamentos" ColumnName="equipamentos" />
+                <ScalarProperty Name="id_unidade" ColumnName="id_unidade" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="unidade">
             <EntityTypeMapping TypeName="Database1Model.unidade">
               <MappingFragment StoreEntitySet="unidade">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="endereco" ColumnName="endereco" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="usuario">
             <EntityTypeMapping TypeName="Database1Model.usuario">
               <MappingFragment StoreEntitySet="usuario">
-                <ScalarProperty Name="senha" ColumnName="senha" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="telefone" ColumnName="telefone" />
-                <ScalarProperty Name="endereco" ColumnName="endereco" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="endereco" ColumnName="endereco" />
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="senha" ColumnName="senha" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
