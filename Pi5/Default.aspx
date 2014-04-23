@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/eventos.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Pi5._Default" %>
 
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="ContentPlaceHolder1">
-    
 
     <asp:GridView ID="gvList" runat="server" AutoGenerateColumns="false" AllowPaging="true" PageSize="10"
         DataKeyNames="ID" OnPageIndexChanging="gvList_PageIndexChanging">

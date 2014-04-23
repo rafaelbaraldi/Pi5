@@ -17,7 +17,7 @@
         <br />
 
         <div class="body">
-            <a href="#" class="login">
+            <a href="/Cadastrar/" class="login">
                 <asp:Label runat="server" Text="Login" />
             </a>
 

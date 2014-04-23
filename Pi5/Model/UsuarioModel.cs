@@ -20,5 +20,17 @@ namespace Pi5
                 return null;
             }
         }
+
+        public usuario Buscar(string mail)
+        {
+            try
+            {
+                return _contexto.usuario.First(p => p.email == mail);
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+        }
     }
 }
