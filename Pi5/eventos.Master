@@ -17,9 +17,21 @@
         <br />
 
         <div class="body">
-            <a href="/Cadastrar/" class="login">
+            <a href="/Default.aspx" class="login">
+                <asp:Label ID="Label2" runat="server" Text="Home" />
+            </a>
+            <br />
+            <a href="/Login/" class="login">
                 <asp:Label runat="server" Text="Login" />
             </a>
+            <br />
+            <a href="/Cadastrar/" class="login">
+                <asp:Label ID="Label1" runat="server" Text="         Cadastrar Usuario" />
+            </a>
+
+            <br />
+            <asp:LinkButton runat="server" ID="lbtnLogoff" Text="Sair" OnClick="lbtnLogoff_Click"/>
+            <br />
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

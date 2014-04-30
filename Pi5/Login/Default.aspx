@@ -21,4 +21,18 @@
     <asp:Literal ID="litMensagem" runat="server" Visible="false"></asp:Literal>
     <br />
 
+    <br />
+    <br />
+
+    <asp:LinkButton runat="server" ID="lbtnSenha" Text="Esqueceu a senha" OnClick="lbtnSenha_Click" />
+
+    <br />
+    <br />
+    <asp:Label runat="server" Text="Email: " ID="lblMail" Visible="false" />
+    <asp:TextBox runat="server" ID="txtLostPass" Visible="false" /> 
+    
+    <br />
+
+    <asp:Button runat="server" ID="btnRecuperar" Text="Recuperar" OnClick="btnRecuperar_Click" Visible="false" />
+
 </asp:Content>
